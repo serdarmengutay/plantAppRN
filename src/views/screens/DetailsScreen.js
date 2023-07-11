@@ -66,7 +66,7 @@ const DetailsScreen = ({ navigation, route }) => {
                 color: COLORS.white,
               }}
             >
-                {amount <= 0 ? <Text>$0</Text> :  '$' + Math.round(item.price * amount)}
+                {amount <= 0 ? <Text>${item.price}</Text> :  '$' + Math.ceil(item.price * amount)}
             </Text>
           </View>
         </View>
