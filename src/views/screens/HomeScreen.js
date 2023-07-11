@@ -49,9 +49,11 @@ const HomeScreen = ({ navigation }) => {
 
   const Card = ({ plant }) => {
     return (
-      <TouchableOpacity 
-      onPress={() => navigation.navigate('DetailsScreen', plant)}
-      activeOpacity={0.9}>
+      <TouchableOpacity
+        style={{ }}
+        onPress={() => navigation.navigate("DetailsScreen", plant)}
+        activeOpacity={1}
+      >
         <View style={styles.card}>
           <View style={{ alignItems: "flex-end" }}>
             <View
@@ -79,13 +81,36 @@ const HomeScreen = ({ navigation }) => {
               source={plant.img}
             />
           </View>
-          <View style={{marginTop: 15}}>
-            <Text style={{color: COLORS.dark, fontWeight: 'bold', fontSize: 15}}>{plant.name}</Text>
-            <View style={{flexDirection: 'row', justifyContent: 'space-between',marginTop: 5 }}>
-                <Text style={{color: COLORS.dark, fontWeight: 'bold', fontSize: 16}}>${plant.price}</Text>
-                <View style={{width: 20, height: 20, backgroundColor: COLORS.green, alignItems: 'center', borderRadius: 5, justifyContent: 'center',}}>
-                    <Icon name="add" size={16} color={COLORS.white}/>
-                </View>
+          <View style={{ marginTop: 15 }}>
+            <Text
+              style={{ color: COLORS.dark, fontWeight: "bold", fontSize: 15 }}
+            >
+              {plant.name}
+            </Text>
+            <View
+              style={{
+                flexDirection: "row",
+                justifyContent: "space-between",
+                marginTop: 5,
+              }}
+            >
+              <Text
+                style={{ color: COLORS.dark, fontWeight: "bold", fontSize: 16 }}
+              >
+                ${plant.price}
+              </Text>
+              <View
+                style={{
+                  width: 20,
+                  height: 20,
+                  backgroundColor: COLORS.green,
+                  alignItems: "center",
+                  borderRadius: 5,
+                  justifyContent: "center",
+                }}
+              >
+                <Icon name="add" size={16} color={COLORS.white} />
+              </View>
             </View>
           </View>
         </View>
@@ -104,20 +129,17 @@ const HomeScreen = ({ navigation }) => {
             Plant Shop
           </Text>
         </View>
-        <Icon name="shopping-cart" size={30} color={COLORS.dark} />
+        <Icon name="shopping-cart" size={30} color={COLORS.dark}  />
       </View>
 
       <View
         style={{
           flexDirection: "row",
-          alignItems: "center",
-          justifyContent: "space-between",
-          paddingHorizontal: 20,
           marginTop: 30,
         }}
       >
         <View style={styles.searchInputContainer}>
-          <Icon name="search" size={25} color={COLORS.dark} />
+          <Icon name="search" size={25} color={COLORS.dark} style={{marginLeft: 20}}/>
           <TextInput
             placeholder="Search"
             style={{
@@ -133,7 +155,8 @@ const HomeScreen = ({ navigation }) => {
       </View>
       <ListCategories />
       <FlatList
-        contentContainerStyle={{ alignSelf: "center", marginTop: 20, paddingBottom: 20}}
+        columnWrapperStyle={{ justifyContent: "space-between" }}
+        contentContainerStyle={{ marginTop: 10, paddingBottom: 50, alignSelf: 'center'  }}
         data={plants}
         numColumns={2}
         showsVerticalScrollIndicator={false}
@@ -146,12 +169,12 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: COLORS.white,
     flex: 1,
+    paddingHorizontal: 20,
   },
   header: {
     marginTop: 20,
     flexDirection: "row",
     justifyContent: "space-between",
-    paddingHorizontal: 20,
     alignItems: "center",
   },
   headerTextCon: {
@@ -164,7 +187,6 @@ const styles = StyleSheet.create({
     fontSize: 22,
   },
   searchInputContainer: {
-    paddingHorizontal: 20,
     flex: 1,
     backgroundColor: COLORS.light,
     borderRadius: 10,
@@ -183,7 +205,6 @@ const styles = StyleSheet.create({
   },
   listCategoryContainer: {
     flexDirection: "row",
-    paddingHorizontal: 20,
     justifyContent: "space-between",
     marginTop: 30,
     marginBottom: 20,
@@ -211,7 +232,6 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     borderRadius: 10,
     padding: 15,
-    elevation: 10,
   },
 });
 export default HomeScreen;
